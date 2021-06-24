@@ -3,10 +3,6 @@ window.onload = () => {
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-
-
-
-
     
     const cWidth = canvas.width;
     const cHeight = canvas.height;
@@ -29,39 +25,37 @@ window.onload = () => {
    let startPos = 50
     //gkeep.onload = () => ctx.drawImage(gkeep, cWidth /2, cHeight /2, 95, 75);
 
-    //const player = new Image();
-    //player.src ='../images/player1.png';
-    //player.onload = () => ctx.drawImage(player, 140, 280, 140, 115);
+    const player = new Image();
+    player.src ='../images/player1.png';
+    player.onload = () => ctx.drawImage(player, 140, 280, 140, 115);
 
     //mover goleiro 
 
     
     function updateCanvas() {
-           
              
         if (startPos += 1) 
             
             ctx.clearRect(0, 0, cWidth, cHeight)
 
-            
-
             drawGkeep(startPos)           
            
             requestAnimationFrame(updateCanvas);
-            
-            //alteração
-            
-
-
-
           }
            
           updateCanvas();
 
       
+        //ctx.clearRect(0, 0, 300, 400);
+        //ctx.fillText('gkeep:' + gkeep.x, 95, 75);
+        //ctx.fillText('gkeep: ' + gkeep.y, 95, 75);
+        
+       
+    
+    
+
     
 
 
 
 };
-
