@@ -12,8 +12,9 @@ body {
   }
   
   .game-intro p {
-    font-size: 18px;
+    font-size: 25px; color: rgb(227, 224, 233);
     font-family: "Verdana"
+     
   }
 
   .soccer-img {
@@ -39,4 +40,14 @@ body {
       float: left;
       padding: 20px 0px;
   }
-  
+  body {
+    padding-top: 100px;
+    background-image: url(../images/wallpaper2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+  }  
+  conta

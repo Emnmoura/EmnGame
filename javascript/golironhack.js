@@ -1,67 +1,128 @@
 window.onload = () => {
+  const startButton = document.getElementById("start-button");
+  startButton.addEventListener('click', function () {
+    updateAnimation()
+  })
+
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  const cWidth = canvas.width;
+  const cHeight = canvas.height;
+
+  const backgraund = new Image();
+  backgraund.src = '../images/field.jpg';
+  backgraund.onload = () => ctx.drawImage(backgraund, -10, -30, cWidth + 20, cHeight + 55);
+
+  //bola
+  // const bola = new Image();
+  // bola.src = '../images/bola.png';
+  // let bolaY = 350;
+
+  // function drawBola(y) {
+  //   ctx.drawImage(bola, 130, y, 45, 35);
+  // }
+  // function updateBola() {
+  //   bolaY -= 1;
+  // }
+
+  //inicio
+
+
+  class Bola {
+    constructor(x, y, w, h) {
+      this.posX = x;
+      this.posY = y;
+      this.width = w;
+      this.height = h;
+      this.imgBola = new Image();
+      this.imgBola.src = '../images/bola.png';
+      this.imgBola.onload = () => this.draw()
+    }
+
+     //Posição da Bola
+    draw() {
+      ctx.drawImage(this.imgBola, this.posX, this.posY, this.width, this.height);
+    }
+    moveWidth() {
+      if (this.height > 350) {
+        this.posY -= this.speed;
+      }
+    }
+    moveRight() {
+      this.posX += 5
+    }
+    moveLeft() {
+      this.posX -= 5
+    }
+
+    moveHeight() {
+      this.posY -= 10
+    }
+
+
+  };
+
+  const player = new Bola(130, 350, 45, 35);
+
+
+  //Goleiro
+  const gkeep = new Image();
+  gkeep.src = '../images/goalkeeper1.png';
+
+  function drawGkeep(x) {
+    ctx.drawImage(gkeep, x, 200, 95, 75);
+  }
+
+  let gkeepX = 50
+  let direction = "direita"
+
+  function updateGkeep() {
+    if (gkeepX > 195) {
+      direction = "esquerda"
+
+    } else if (gkeepX < 15) {
+      direction = "direita"
+    }
+    if (direction === "direita") {
+      gkeepX += 1
+    }
+    else if (direction === "esquerda") {
+      gkeepX -= 1
+
+    }
+  }
+
+  //Animation
+  function updateAnimation() {
+    ctx.clearRect(0, 0, cWidth, cHeight)
+    ctx.drawImage(backgraund, -10, -30, cWidth + 20, cHeight + 55);
+    updateGkeep()
+    drawGkeep(gkeepX)
+    player.draw()
     
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
+    requestAnimationFrame(updateAnimation)
 
+  }
+  //Movimento da Bola
+  document.addEventListener("keypress", function (e) { 
+    console.log(e.key)
+    if (e.key === " ") {
+      player.moveHeight()
 
-
-
-    
-    const cWidth = canvas.width;
-    const cHeight = canvas.height;
-
-    const backgraund = new Image(); 
-    backgraund.src = '../images/field.jpg'; 
-    backgraund.onload  = () => ctx.drawImage(backgraund, -10, -30, cWidth + 20, cHeight +55);
-    
-    const bol = new Image();
-    bol.src = '../images/bola.png';
-    bol.onload = () => ctx.drawImage(bol, 130, 345, 45, 35);
-
-    const gkeep = new Image();
-    gkeep.src = '../images/goalkeeper1.png';
-    
-    function drawGkeep(x) {
-    
-     ctx.drawImage(gkeep, x, 200, 95, 75);
-}
-   let startPos = 50
-    //gkeep.onload = () => ctx.drawImage(gkeep, cWidth /2, cHeight /2, 95, 75);
-
-    //const player = new Image();
-    //player.src ='../images/player1.png';
-    //player.onload = () => ctx.drawImage(player, 140, 280, 140, 115);
-
-    //mover goleiro 
-
-    
-    function updateCanvas() {
-           
-             
-        if (startPos += 1) 
-            
-            ctx.clearRect(0, 0, cWidth, cHeight)
-
-            
-
-            drawGkeep(startPos)           
-           
-            requestAnimationFrame(updateCanvas);
-            
-            //alteração
-            
-
-
-
-          }
-           
-          updateCanvas();
-
-      
+      console.log("teste");
+    }
+    if (e.key === "a") {
+      player.moveLeft()
+    }
+    if (e.key === "d") {
+      player.moveRight()
+    }
     
 
-
+  });
+  
 
 };
 
