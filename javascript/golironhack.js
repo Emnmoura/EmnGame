@@ -38,12 +38,15 @@ window.onload = () => {
       this.imgBola = new Image();
       this.imgBola.src = '../images/bola.png';
       this.imgBola.onload = () => this.draw()
+
+
     }
 
-     //Posição da Bola
+    //Posição da Bola
     draw() {
       ctx.drawImage(this.imgBola, this.posX, this.posY, this.width, this.height);
     }
+
     moveWidth() {
       if (this.height > 350) {
         this.posY -= this.speed;
@@ -57,10 +60,24 @@ window.onload = () => {
     }
 
     moveHeight() {
-      this.posY -= 10
+      this.posY -= 155 //velocidade da bola
+    }
+    left() {
+      return this.posX;
+    }
+    right() {
+      return this.posX + this.width;
+    }
+    top() {
+      return this.posY;
+    }
+    bottom() {
+      return this.posY + this.height;
     }
 
-
+    crashWith() {
+      return !(this.bottom() < 200 || this.top() > 295 || this.right() < gkeepX || this.left() > gkeepX + 75);
+    }
   };
 
   const player = new Bola(130, 350, 45, 35);
@@ -85,13 +102,20 @@ window.onload = () => {
       direction = "direita"
     }
     if (direction === "direita") {
-      gkeepX += 1
+      gkeepX += 3 //velocidade do goleiro
     }
     else if (direction === "esquerda") {
-      gkeepX -= 1
+      gkeepX -= 3 //Velocidade do goleiro
 
     }
   }
+  function checkCollision() {
+    if (player.crashWith()) {
+
+    }
+
+  }
+
 
   //Animation
   function updateAnimation() {
@@ -100,13 +124,15 @@ window.onload = () => {
     updateGkeep()
     drawGkeep(gkeepX)
     player.draw()
-    
+    checkCollision()
+
+
 
     requestAnimationFrame(updateAnimation)
 
   }
   //Movimento da Bola
-  document.addEventListener("keypress", function (e) { 
+  document.addEventListener("keypress", function (e) {
     console.log(e.key)
     if (e.key === " ") {
       player.moveHeight()
@@ -119,10 +145,13 @@ window.onload = () => {
     if (e.key === "d") {
       player.moveRight()
     }
-    
+
 
   });
-  
+
+
+
+
 
 };
 
