@@ -4,30 +4,34 @@ window.onload = () => {
     updateAnimation()
   })
 
+  let ponto = 0
+  let animation = null
+
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
+
+  //Audio  
+  let sgoal = new Audio();
+  sgoal.src = './images/goal.mp3';
+  sgoal.volume = 0.3;
+
+  let sgameover = new Audio();
+  sgameover.src = './images/game over.mp3';
+
+  //Placar
+  const score = function () {
+
+    ctx.font = "35px VT323";
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Score: ${ponto}`, 0, 50, 130);
+  }
 
   const cWidth = canvas.width;
   const cHeight = canvas.height;
 
   const backgraund = new Image();
-  backgraund.src = '../images/field.jpg';
+  backgraund.src = './images/field.jpg';
   backgraund.onload = () => ctx.drawImage(backgraund, -10, -30, cWidth + 20, cHeight + 55);
-
-  //bola
-  // const bola = new Image();
-  // bola.src = '../images/bola.png';
-  // let bolaY = 350;
-
-  // function drawBola(y) {
-  //   ctx.drawImage(bola, 130, y, 45, 35);
-  // }
-  // function updateBola() {
-  //   bolaY -= 1;
-  // }
-
-  //inicio
-
 
   class Bola {
     constructor(x, y, w, h) {
@@ -36,12 +40,10 @@ window.onload = () => {
       this.width = w;
       this.height = h;
       this.imgBola = new Image();
-      this.imgBola.src = '../images/bola.png';
+      this.imgBola.src = './images/bola.png';
       this.imgBola.onload = () => this.draw()
-
-
     }
-
+    
     //Posição da Bola
     draw() {
       ctx.drawImage(this.imgBola, this.posX, this.posY, this.width, this.height);
@@ -58,10 +60,11 @@ window.onload = () => {
     moveLeft() {
       this.posX -= 5
     }
-
+    //Velocidade da bola
     moveHeight() {
-      this.posY -= 155 //velocidade da bola
+      this.posY -= 165
     }
+    //Colisão 
     left() {
       return this.posX;
     }
@@ -75,6 +78,10 @@ window.onload = () => {
       return this.posY + this.height;
     }
 
+    areaDoGol() {
+      return !(this.right() < 70 || this.left() > 230 || this.bottom() < 200 || this.top() > 295);
+    }
+
     crashWith() {
       return !(this.bottom() < 200 || this.top() > 295 || this.right() < gkeepX || this.left() > gkeepX + 75);
     }
@@ -85,7 +92,7 @@ window.onload = () => {
 
   //Goleiro
   const gkeep = new Image();
-  gkeep.src = '../images/goalkeeper1.png';
+  gkeep.src = './images/goalkeeper1.png';
 
   function drawGkeep(x) {
     ctx.drawImage(gkeep, x, 200, 95, 75);
@@ -95,27 +102,52 @@ window.onload = () => {
   let direction = "direita"
 
   function updateGkeep() {
-    if (gkeepX > 195) {
+
+    if (gkeepX > 180) {
       direction = "esquerda"
 
-    } else if (gkeepX < 15) {
+    } else if (gkeepX < 25) {
       direction = "direita"
     }
+    //Velocidade do goleiro
     if (direction === "direita") {
-      gkeepX += 3 //velocidade do goleiro
+      gkeepX += 3
     }
     else if (direction === "esquerda") {
-      gkeepX -= 3 //Velocidade do goleiro
-
+      gkeepX -= 3
     }
+
   }
   function checkCollision() {
+
     if (player.crashWith()) {
 
+      sgameover.play();
+
+      cancelAnimationFrame(animation);
+      drawOver();
+
+      return true
     }
 
-  }
+    if (!player.crashWith() && direction === null) {
+      sgoal.play();
+      ponto += 1
 
+      cancelAnimationFrame(animation);
+      setTimeout(restart, 1000);
+
+      return true
+
+    }
+    return false
+
+  }
+  function drawOver() {
+    let img = new Image();
+    img.src = './images/soccer.PNG';
+    img.onload = () => ctx.drawImage(img, 100, 100, 150, 150);
+  }
 
   //Animation
   function updateAnimation() {
@@ -124,20 +156,26 @@ window.onload = () => {
     updateGkeep()
     drawGkeep(gkeepX)
     player.draw()
-    checkCollision()
+    if (!checkCollision()) {
+      animation = requestAnimationFrame(updateAnimation)
+    }
 
+    score()
+  }
 
-
-    requestAnimationFrame(updateAnimation)
+  function restart() {
+    player.posX = 130;
+    player.posY = 350;
+    direction = "direita"
+    updateAnimation()
 
   }
   //Movimento da Bola
   document.addEventListener("keypress", function (e) {
-    console.log(e.key)
-    if (e.key === " ") {
-      player.moveHeight()
 
-      console.log("teste");
+    if (e.code === "KeyW") {
+      player.moveHeight()
+      direction = null
     }
     if (e.key === "a") {
       player.moveLeft()
@@ -145,13 +183,6 @@ window.onload = () => {
     if (e.key === "d") {
       player.moveRight()
     }
-
-
   });
-
-
-
-
-
 };
 

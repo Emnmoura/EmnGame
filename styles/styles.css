@@ -12,7 +12,8 @@ body {
   }
   
   .game-intro p {
-    font-size: 25px; color: rgb(227, 224, 233);
+    background-color: #4c59a5;
+    font-size: 25px; color: rgb(235, 237, 245);
     font-family: "Verdana"
      
   }
@@ -23,6 +24,14 @@ body {
 
   .arrows-img {
     width: 150px;
+  }
+
+  h3 {
+    background-color: #4c59a5;    
+    font-size: 15px; color: rgb(235, 237, 245);
+    font-family: "Tahoma"
+    
+    
   }
 
   body button {
@@ -41,8 +50,8 @@ body {
       padding: 20px 0px;
   }
   body {
-    padding-top: 100px;
-    background-image: url(../images/wallpaper2.jpeg);
+    padding-top: 300px;
+    background-image: url("../images/paper2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -50,4 +59,4 @@ body {
     text-align: center;
     align-items: center;
   }  
-  conta
+  
