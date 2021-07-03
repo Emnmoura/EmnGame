@@ -43,7 +43,7 @@ window.onload = () => {
       this.imgBola.src = './images/bola.png';
       this.imgBola.onload = () => this.draw()
     }
-    
+
     //Posição da Bola
     draw() {
       ctx.drawImage(this.imgBola, this.posX, this.posY, this.width, this.height);
@@ -95,7 +95,7 @@ window.onload = () => {
   gkeep.src = './images/goalkeeper1.png';
 
   function drawGkeep(x) {
-    ctx.drawImage(gkeep, x, 200, 95, 75);
+    ctx.drawImage(gkeep, x, 200, 99, 75);
   }
 
   let gkeepX = 50
@@ -111,41 +111,41 @@ window.onload = () => {
     }
     //Velocidade do goleiro
     if (direction === "direita") {
-      gkeepX += 3
+      gkeepX += 3,5
     }
     else if (direction === "esquerda") {
-      gkeepX -= 3
+      gkeepX -= 3,5
     }
 
   }
+  //Colisão 
   function checkCollision() {
-
     if (player.crashWith()) {
-
       sgameover.play();
-
       cancelAnimationFrame(animation);
       drawOver();
-
       return true
     }
-
     if (!player.crashWith() && direction === null) {
       sgoal.play();
       ponto += 1
-
       cancelAnimationFrame(animation);
       setTimeout(restart, 1000);
-
+      drawGol();
       return true
-
     }
     return false
 
   }
+
+  function drawGol() {
+    let imgG = new Image();
+    imgG.src = './images/goal.png';
+    imgG.onload = () => ctx.drawImage(imgG, 100, 100, 150, 150);
+  }
   function drawOver() {
     let img = new Image();
-    img.src = './images/soccer.PNG';
+    img.src = './images/gameover.png';
     img.onload = () => ctx.drawImage(img, 100, 100, 150, 150);
   }
 
@@ -162,7 +162,7 @@ window.onload = () => {
 
     score()
   }
-
+  //Retornar a posição
   function restart() {
     player.posX = 130;
     player.posY = 350;
@@ -177,10 +177,10 @@ window.onload = () => {
       player.moveHeight()
       direction = null
     }
-    if (e.key === "a") {
+    if (e.code === "KeyA") {
       player.moveLeft()
     }
-    if (e.key === "d") {
+    if (e.code === "KeyD") {
       player.moveRight()
     }
   });
