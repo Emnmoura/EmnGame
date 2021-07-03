@@ -1,5 +1,5 @@
 #canvas {
-    border: 5px solid  rgb(33, 224, 43);
+    border: 15px solid  rgb(41, 141, 235);
     border-radius: 35px;
     
 }
@@ -23,14 +23,16 @@ body {
   } 
   
   .game-intro h3 {
-    background-color: #4c59a5;  
-    font-family: 'Jolly Lodger', cursive;
+    background-color: #4c59a5; 
+    padding: 5px 3px; 
+    font-family: 'Verdana', cursive;
     letter-spacing: 1px;
     color: rgb(242,222,13);
     text-shadow: 2px 2px black;
-    font-size: 23px;
+    font-size: 20px;
     margin-bottom: 40px;
     border-radius: 15px;
+   
     
   }
   .soccer-img {
@@ -39,19 +41,17 @@ body {
 
   .arrows-img {
     width: 150px;
-  }
-
-  
+  }  
 
   body button {
     font-size: 30px;
     background-color: #008753;
     color: #fff;
     padding: 20px 40px;
-    border: 0;
+    border: 50;
     box-shadow: 150;
     border-radius: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 45px;
   } 
   
   body {

@@ -18,7 +18,7 @@ window.onload = () => {
   let sgameover = new Audio();
   sgameover.src = './images/game over.mp3';
 
-  //Placar
+  //Score
   const score = function () {
 
     ctx.font = "35px VT323";
@@ -44,7 +44,7 @@ window.onload = () => {
       this.imgBola.onload = () => this.draw()
     }
 
-    //Posição da Bola
+    //Ball Position
     draw() {
       ctx.drawImage(this.imgBola, this.posX, this.posY, this.width, this.height);
     }
@@ -60,11 +60,11 @@ window.onload = () => {
     moveLeft() {
       this.posX -= 5
     }
-    //Velocidade da bola
+    //Ball speed
     moveHeight() {
       this.posY -= 165
     }
-    //Colisão 
+    
     left() {
       return this.posX;
     }
@@ -90,7 +90,7 @@ window.onload = () => {
   const player = new Bola(130, 350, 45, 35);
 
 
-  //Goleiro
+  //Goalkeeper
   const gkeep = new Image();
   gkeep.src = './images/goalkeeper1.png';
 
@@ -109,7 +109,7 @@ window.onload = () => {
     } else if (gkeepX < 25) {
       direction = "direita"
     }
-    //Velocidade do goleiro
+    //goalkeeper speed
     if (direction === "direita") {
       gkeepX += 3,5
     }
@@ -118,7 +118,7 @@ window.onload = () => {
     }
 
   }
-  //Colisão 
+  //Colision
   function checkCollision() {
     if (player.crashWith()) {
       sgameover.play();
@@ -162,7 +162,7 @@ window.onload = () => {
 
     score()
   }
-  //Retornar a posição
+  //Return the position
   function restart() {
     player.posX = 130;
     player.posY = 350;
@@ -170,7 +170,7 @@ window.onload = () => {
     updateAnimation()
 
   }
-  //Movimento da Bola
+  //ball move
   document.addEventListener("keypress", function (e) {
 
     if (e.code === "KeyW") {
