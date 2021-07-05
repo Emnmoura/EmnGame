@@ -111,10 +111,10 @@ window.onload = () => {
     }
     //goalkeeper speed
     if (direction === "direita") {
-      gkeepX += 3,5
+      gkeepX += 4,2
     }
     else if (direction === "esquerda") {
-      gkeepX -= 3,5
+      gkeepX -= 4,2
     }
 
   }

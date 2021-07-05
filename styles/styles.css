@@ -13,49 +13,43 @@ body {
     padding: 0% 10%;
   }
   
-  .game-intro h2 { 
-    background-color: #4c59a5; 
-    font-size: 15px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    padding: 5px 10px;
-       
+   h1{ 
+    background-color:cornflowerblue;
+    border-radius: 6px;
+    width: 640px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;    
+    padding-bottom: 30px;
+    font-family: 'Jolly Lodger', cursive;
+  } 
+
+  h2 { 
+  background-color:rgb(9, 64, 167);  
+  font-family: 'Jolly Lodger', cursive;
+  letter-spacing: 3px;
+  color: rgb(242,222,13);
+  text-shadow: 2px 2px black;
+  font-size: 15px;  
+  border-radius: 10px;
+
   } 
   
-  .game-intro h3 {
-    background-color: #4c59a5; 
-    padding: 5px 3px; 
-    font-family: 'Verdana', cursive;
-    letter-spacing: 1px;
-    color: rgb(242,222,13);
-    text-shadow: 2px 2px black;
-    font-size: 20px;
-    margin-bottom: 40px;
-    border-radius: 15px;
-   
-    
-  }
-  .soccer-img {
-    width: 250px;
-  }
-
-  .arrows-img {
-    width: 150px;
-  }  
-
   body button {
     font-size: 30px;
     background-color: #008753;
     color: #fff;
     padding: 20px 40px;
     border: 50;
-    box-shadow: 150;
-    border-radius: 15px;
-    margin-bottom: 45px;
+    box-shadow: 50;
+    border-radius: 10px;
+    margin-bottom: 38px;
   } 
   
   body {
-    padding-top: 1px;
+    padding-top: 87px; 
     background-image: url("../images/paper2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -63,6 +57,7 @@ body {
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
+    height: 500px;   
     
   }  
   
