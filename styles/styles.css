@@ -5,37 +5,44 @@
 body {
     padding: 0;
     text-align: center;
+
   }
 
   .game-intro {
     float: left;
     padding: 0% 10%;
   }
+  h1 { 
+   font-size: 35px;
+   font-family: Arcade;
+   background-color: #5b99eb; 
+   color: #fff;
+   border-radius: 20px;   
+        
+  } 
+   
+  .game-intro h2 { 
+    background-color: #4c59a5; 
+    font-size: 18px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    padding: 5px 10px; 
+    color: rgb(242,222,13); 
+    text-shadow: 2px 2px black;     
+  } 
   
-   h1{ 
-    background-color:rgb(9, 64, 167);
-    border-radius: 6px;
-    font-size: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #fff;      
+  .game-intro h3 {
+    background-color: #4c59a5; 
+    padding: 0px 30px; 
     font-family: 'Jolly Lodger', cursive;
-    margin-bottom: 70px;
-  } 
-
-  h2 { 
-  background-color:rgb(9, 64, 167);  
-  font-family: 'Jolly Lodger', cursive;
-  letter-spacing: 3px;
-  color: rgb(242,222,13);
-  text-shadow: 2px 2px black;
-  font-size: 20px;
-  border-radius: 10px;
-  padding: 10px 10px;
+    letter-spacing: 1px;
+    color: rgb(242,222,13);
+    text-shadow: 2px 2px black;
+    font-size: 18px;
+    margin-bottom: 25px;
+    border-radius: 15px;    
+  }
  
-
-  } 
   
   body button {
     font-size: 30px;
@@ -45,7 +52,7 @@ body {
     border: 50;
     box-shadow: 50;
     border-radius: 10px;
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   } 
   
   body {
@@ -57,6 +64,7 @@ body {
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
+    
           
   }  
   
