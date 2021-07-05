@@ -33,6 +33,7 @@ window.onload = () => {
   backgraund.src = './images/field.jpg';
   backgraund.onload = () => ctx.drawImage(backgraund, -10, -30, cWidth + 20, cHeight + 55);
 
+
   class Bola {
     constructor(x, y, w, h) {
       this.posX = x;
@@ -64,7 +65,6 @@ window.onload = () => {
     moveHeight() {
       this.posY -= 165
     }
-    
     left() {
       return this.posX;
     }
@@ -111,10 +111,10 @@ window.onload = () => {
     }
     //goalkeeper speed
     if (direction === "direita") {
-      gkeepX += 4,2
+      gkeepX += 4, 2
     }
     else if (direction === "esquerda") {
-      gkeepX -= 4,2
+      gkeepX -= 4, 2
     }
 
   }
@@ -135,7 +135,6 @@ window.onload = () => {
       return true
     }
     return false
-
   }
 
   function drawGol() {

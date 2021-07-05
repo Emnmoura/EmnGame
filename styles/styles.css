@@ -1,7 +1,6 @@
 #canvas {
     border: 15px solid  rgb(41, 141, 235);
-    border-radius: 35px;
-    
+    border-radius: 35px;    
 }
 body {
     padding: 0;
@@ -34,7 +33,6 @@ body {
   text-shadow: 2px 2px black;
   font-size: 15px;  
   border-radius: 10px;
-
   } 
   
   body button {
@@ -57,7 +55,6 @@ body {
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
-    height: 500px;   
-    
+    height: 500px;       
   }  
   

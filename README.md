@@ -1,4 +1,4 @@
- # GolInrohack Penanty Callenge
+ # <center><u>GolInrohack Penanty Callenge.</u></center>
 (My Ironhack project for fase 1)
 
 <img src = "./images/Game.JPG">
@@ -22,9 +22,10 @@ The GolIronhack Penalty Challenge is a simple game where the objective is to kic
 ### Resources:
 - The Project uses Canvas technology
 - Images from Google Photos
-- Flaticon.com/free-icons/gaming
 - Sfx free of freesound.org
-- Free music at Youtube Music
+- Royalty Free Music - DL Sounds
+- free music from
+
 
 ---
  ### Information:
